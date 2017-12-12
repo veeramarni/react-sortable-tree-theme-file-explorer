@@ -12,41 +12,44 @@ class App extends Component {
       searchFocusIndex: 0,
       searchFoundCount: null,
       treeData: [
-        { title: '.gitignore' },
-        { title: 'package.json' },
         {
-          title: 'src',
-          isDirectory: true,
-          expanded: true,
-          children: [
-            { title: 'styles.css' },
-            { title: 'index.js' },
-            { title: 'reducers.js' },
-            { title: 'actions.js' },
-            { title: 'utils.js' },
-          ],
-        },
-        {
-          title: 'tmp',
-          isDirectory: true,
-          children: [
-            { title: '12214124-log' },
-            { title: 'drag-disabled-file', dragDisabled: true },
-          ],
-        },
-        {
-          title: 'build',
-          isDirectory: true,
-          children: [{ title: 'react-sortable-tree.js' }],
-        },
-        {
-          title: 'public',
-          isDirectory: true,
-        },
-        {
-          title: 'node_modules',
-          isDirectory: true,
-        },
+          "resource": "file:///Users/veeramarni/Documents/eclipse/workspace/phoneapps/development",
+          "title": "development",
+          "mtime": "1509219922000",
+          "etag": "\"60aa55e9e29fe7074561d0fb59791b5314eea1f7\"",
+          "isDirectory": true,
+          "hasChildren": true,
+          "size": 170,
+          "children": [
+            {
+              "resource": "file:///Users/veeramarni/Documents/eclipse/workspace/phoneapps/development/examples",
+              "title": "examples",
+              "mtime": "1512555116000",
+              "etag": "\"972d733c131ce3c7dd7034f592f5ef2405dab35a\"",
+              "isDirectory": true,
+              "hasChildren": true,
+              "size": 918
+            },
+            {
+              "resource": "file:///Users/veeramarni/Documents/eclipse/workspace/phoneapps/development/private",
+              "title": "private",
+              "mtime": "1483116962000",
+              "etag": "\"78457ee2310db67700563ee296708b825b9ff10e\"",
+              "isDirectory": true,
+              "hasChildren": true,
+              "size": 102
+            },
+            {
+              "resource": "file:///Users/veeramarni/Documents/eclipse/workspace/phoneapps/development/projects",
+              "title": "projects",
+              "mtime": "1509219996000",
+              "etag": "\"e6d4c3f7ade90aa5dd985689bc939affd37eb03a\"",
+              "isDirectory": true,
+              "hasChildren": true,
+              "size": 612
+            }
+          ]
+        }
       ],
     };
 
