@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReactHtmlParser from 'react-html-parser';
 import styles from './node-content-renderer.scss';
 
 function isDescendant(older, younger) {
@@ -46,7 +47,24 @@ class FileThemeNodeContentRenderer extends Component {
       rowDirection,
       ...otherProps
     } = this.props;
+
     const nodeTitle = title || node.title;
+
+    const formatTitle = (search, replace, data) => {
+      if(data && data.search(search) !== -1) {
+        if (!replace) {
+          const result = data.replace(search, `<span style="background-color: rgba(234, 92, 0, 0.33);">${search}</span>`);
+          return result
+        } else {
+          const result = data.replace(search, `<span style="text-decoration: line-through; background-color: rgba(255, 0, 0, 0.2);">${search}</span><mark style="background-color: rgba(155, 185, 85, 0.2)">${replace}</mark>`);
+          return result
+        }
+      }
+      return data
+    };
+
+    const newTitle = !node.isDirectory ? formatTitle(node.search, node.replace, nodeTitle) : nodeTitle;
+
 
     const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node);
     const isLandingPadActive = !didDrop && isDragging;
@@ -166,7 +184,7 @@ class FileThemeNodeContentRenderer extends Component {
                             path,
                             treeIndex,
                           })
-                        : nodeTitle}
+                          : ReactHtmlParser(newTitle)}
                     </span>
                   </div>
 
