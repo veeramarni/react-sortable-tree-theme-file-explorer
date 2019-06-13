@@ -52,11 +52,12 @@ class FileThemeNodeContentRenderer extends Component {
 
     const formatTitle = (search, replace, data) => {
       if(data && data.search(search) !== -1) {
+        var re = new RegExp(search, "g");
         if (!replace) {
-          const result = data.replace(search, `<span style="background-color: rgba(234, 92, 0, 0.33);">${search}</span>`);
+          const result = data.replace(re, `<span style="background-color: rgba(234, 92, 0, 0.33);">${search}</span>`);
           return result
         } else {
-          const result = data.replace(search, `<span style="text-decoration: line-through; background-color: rgba(255, 0, 0, 0.2);">${search}</span><mark style="background-color: rgba(155, 185, 85, 0.2)">${replace}</mark>`);
+          const result = data.replace(re, `<span style="text-decoration: line-through; background-color: rgba(255, 0, 0, 0.2);">${search}</span><mark style="background-color: rgba(155, 185, 85, 0.2)">${replace}</mark>`);
           return result
         }
       }
@@ -64,7 +65,6 @@ class FileThemeNodeContentRenderer extends Component {
     };
 
     const newTitle = !node.isDirectory ? formatTitle(node.search, node.replace, nodeTitle) : nodeTitle;
-
 
     const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node);
     const isLandingPadActive = !didDrop && isDragging;
