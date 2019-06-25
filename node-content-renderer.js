@@ -50,21 +50,21 @@ class FileThemeNodeContentRenderer extends Component {
 
     const nodeTitle = title || node.title;
 
-    const formatTitle = (search, replace, data) => {
-      if(data && data.search(search) !== -1) {
-        var re = new RegExp(search, "g");
-        if (!replace) {
-          const result = data.replace(re, `<span style="background-color: rgba(234, 92, 0, 0.33);">${search}</span>`);
-          return result
-        } else {
-          const result = data.replace(re, `<span style="text-decoration: line-through; background-color: rgba(255, 0, 0, 0.2);">${search}</span><mark style="background-color: rgba(155, 185, 85, 0.2)">${replace}</mark>`);
-          return result
-        }
-      }
-      return data
-    };
+    // const formatTitle = (search, replace, data) => {
+    //   if(data &&  search && data.search(search) !== -1) {
+    //     var re = new RegExp(search, "g");
+    //     if (!replace) {
+    //       const result = data.replace(re, `<span style="background-color: rgba(234, 92, 0, 0.33);">${search}</span>`);
+    //       return result
+    //     } else {
+    //       const result = data.replace(re, `<span style="text-decoration: line-through; background-color: rgba(255, 0, 0, 0.2);">${search}</span><mark style="background-color: rgba(155, 185, 85, 0.2)">${replace}</mark>`);
+    //       return result
+    //     }
+    //   }
+    //   return data
+    // };
 
-    const newTitle = !node.isDirectory ? formatTitle(node.search, node.replace, nodeTitle) : nodeTitle;
+    // const newTitle = !node.isDirectory ? formatTitle(node.search, node.replace, nodeTitle) : nodeTitle;
 
     const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node);
     const isLandingPadActive = !didDrop && isDragging;
@@ -176,15 +176,15 @@ class FileThemeNodeContentRenderer extends Component {
                       </div>
                     ))}
                   </div>
-                  <div className={styles.rowLabel}>
-                    <span className={styles.rowTitle}>
+                  <div className={styles.rowLabel} >
+                    <span className={styles.rowTitle} onClick={node.callback}>
                       {typeof nodeTitle === 'function'
                         ? nodeTitle({
                             node,
                             path,
                             treeIndex,
                           })
-                          : ReactHtmlParser(newTitle)}
+                          : ReactHtmlParser(nodeTitle)}
                     </span>
                   </div>
 

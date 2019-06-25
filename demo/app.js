@@ -22,7 +22,7 @@ class App extends Component {
           isDirectory: true,
           expanded: true,
           children: [
-            { title: 'styles.css', annotation: "asdfasdfasdf3.rtf" },
+            { title: 'styles.css', callback: () => {console.log('hello word')} },
             { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf" },
             { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf" },
             { title: 'actions.js', annotation: "222333dd6.rtf" },
