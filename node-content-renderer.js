@@ -198,6 +198,43 @@ class FileThemeNodeContentRenderer extends Component {
                       </div>
                     ))}
                   </div>
+            {toggleChildrenVisibility &&
+            node.children &&
+            node.children.length > 0 && (
+            <ul style={{
+                display: 'contents',
+                listStyle: 'none',
+            }}>
+                <li style={{
+                    color: 'rgb(255, 255, 255)',
+                    backgroundColor: 'rgb(77, 77, 77)',
+                    textAlign: 'center',
+                    display: 'inline-block',
+                    padding: '.3em .5em',
+                    borderRadius: '1em',
+                    fontSize: '85%',
+                    minWidth: '1.6em',
+                    lineHeight: '1em',
+                    fontWeight: '400',
+                    boxSizing: 'border-box',
+                    marginRight: '12px',
+                }}>
+                  {node.children.length}
+                </li>
+                <li>
+                    <a style={{
+                            background: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='3 3 16 16'%3E%3Cpath fill='%23e8e8e8' d='M12.597 11.042l2.803 2.803-1.556 1.555-2.802-2.802L8.239 15.4l-1.556-1.555 2.802-2.803-2.802-2.803 1.555-1.556 2.804 2.803 2.803-2.803L15.4 8.239z'/%3E%3C/svg%3E")`,
+                            display: 'none',
+                            marginRight: '.2em',
+                            marginTop: '4px',
+                            backgroundRepeat: 'no-repeat',
+                            width: '16px',
+                            height: '16px',
+                            cursor: 'pointer',
+                    }}>X</a>
+                </li>
+            </ul>
+            )}
                 </div>
               </div>
             </div>

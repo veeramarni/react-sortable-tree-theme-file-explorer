@@ -16,17 +16,25 @@ class App extends Component {
       searchFoundCount: null,
       treeData: [
         { title: '<div>.gitignore</div>', annotation: "text.rtf"},
-        { title: 'package.json', annotation: "text.rtf",  },
+        { title: 'package.json', annotation: "text.rtf", 
+          children: [
+            { title: 'styles.css', callback: () => {console.log('hello word 123')} },
+            { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf" },
+            { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf" },
+            { title: 'actions.js', annotation: "222333dd6.rtf" },
+            { title: 'utils.js', annotation: '123123123eeeeeee' },
+            ],
+         },
         {
           title: 'src',
           isDirectory: true,
           expanded: true,
           children: [
-            { title: 'styles.css', callback: () => {console.log('hello word')} },
+            { title: 'styles.css', callback: () => {console.log('hello word 123')} },
             { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf" },
             { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf" },
-            { title: 'actions.js', annotation: "222333dd6.rtf" },
-            { title: 'utils.js' },
+            { title: 'actions.js', annotation: "222333dd6.rtf", children: [{title: 12345, annotation: 12345}] },
+            { title: 'utils.js', annotation: '123123123eeeeeee' },
           ],
           annotation: "/1.rtf",
           query: '',
@@ -221,8 +229,8 @@ class App extends Component {
                   matches.length > 0 ? searchFocusIndex % matches.length : 0,
               })
             }
-            canDrag={({ node }) => !node.dragDisabled}
-            canDrop={({ nextParent }) => !nextParent || nextParent.isDirectory}
+            canDrag={false}
+            canDrop={false}
             generateNodeProps={rowInfo =>
             //     ({
             //   icons: rowInfo.node.isDirectory
