@@ -195,6 +195,21 @@ class FileThemeNodeContentRenderer extends Component {
                         className={styles.toolbarButton}
                       >
                         {btn}
+            {!node.children && (
+            <a style={{
+              // white >>>   data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='3 3 16 16'%3E%3Cpath fill='%23e8e8e8' d='M12.597 11.042l2.803 2.803-1.556 1.555-2.802-2.802L8.239 15.4l-1.556-1.555 2.802-2.803-2.802-2.803 1.555-1.556 2.804 2.803 2.803-2.803L15.4 8.239z'/%3E%3C/svg%3E
+              // black >>>   data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='3 3 16 16'%3E%3Cpath fill='%23424242' d='M12.597 11.042l2.803 2.803-1.556 1.555-2.802-2.802L8.239 15.4l-1.556-1.555 2.802-2.803-2.802-2.803 1.555-1.556 2.804 2.803 2.803-2.803L15.4 8.239z'/%3E%3C/svg%3E
+              background: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='3 3 16 16'%3E%3Cpath fill='%23424242' d='M12.597 11.042l2.803 2.803-1.556 1.555-2.802-2.802L8.239 15.4l-1.556-1.555 2.802-2.803-2.802-2.803 1.555-1.556 2.804 2.803 2.803-2.803L15.4 8.239z'/%3E%3C/svg%3E") 50% no-repeat`,
+                  display: 'none',
+                  marginRight: '.2em',
+                  marginTop: '4px',
+                  backgroundRepeat: 'no-repeat',
+                  width: '8px',
+                  height: '8px',
+                  cursor: 'pointer',
+            }}
+              onClick={node.removeField}></a>
+            )}
                       </div>
                     ))}
                   </div>
@@ -234,7 +249,7 @@ class FileThemeNodeContentRenderer extends Component {
                        height: '10px',
                        cursor: 'pointer',
                     }}
-                    onClick={node.remove}></a>
+                    onClick={node.removeFile}></a>
                 </li>
             </ul>
             )}

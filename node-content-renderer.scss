@@ -8,6 +8,9 @@
       & div > div > ul > li > a {
           display: block !important;
       }
+    & div > div > div > a {
+      display: block !important;
+    }
   }
 
   &:active {
@@ -81,7 +84,7 @@
 }
 
 %rowItem {
-  display: inline-block;
+  display: flex;
   vertical-align: middle;
 }
 
