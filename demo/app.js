@@ -230,7 +230,6 @@ class App extends Component {
               })
             }
             canDrag={false}
-            canDrop={false}
             generateNodeProps={rowInfo =>
             //     ({
             //   icons: rowInfo.node.isDirectory
