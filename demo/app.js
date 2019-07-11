@@ -18,11 +18,11 @@ class App extends Component {
         { title: '<div>.gitignore</div>', annotation: "text.rtf"},
         { title: 'package.json', annotation: "text.rtf", 
           children: [
-            { title: 'styles.css', callback: () => {console.log('hello word 123')} },
-            { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf" },
-            { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf" },
-            { title: 'actions.js', annotation: "222333dd6.rtf" },
-            { title: 'utils.js', annotation: '123123123eeeeeee' },
+            { title: 'styles.css', openFile: () => {console.log('hello word 123')} },
+            { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf", openFile: () => {console.log('hello word 123')} },
+            { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf", openFile: () => {console.log('hello word 321')} },
+            { title: 'actions.js', annotation: "222333dd6.rtf", openFile: () => {console.log('hello')} },
+            { title: 'utils.js', annotation: '123123123eeeeeee', openFile: () => {console.log('hello word ')} },
             ],
          },
         {
