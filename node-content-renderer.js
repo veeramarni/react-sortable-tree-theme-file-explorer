@@ -270,7 +270,7 @@ class FileThemeNodeContentRenderer extends Component {
                    cursor: 'pointer',
                 }}
                 title={'Replace All'}
-                onClick={() => console.log('click replace all file')}></a>
+                onClick={node.replaceAllInFile}></a>
               </li>
                 <li>
                   <a style={{
