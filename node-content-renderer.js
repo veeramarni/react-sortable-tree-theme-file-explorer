@@ -214,7 +214,7 @@ class FileThemeNodeContentRenderer extends Component {
                         <li>
                           <a className={styles.replaceField}
                              title={'Replace'}
-                             onClick={() => console.log('click replace field')} />
+                             onClick={node.replaceField} />
                         </li>
                         <li>
                           <a className={styles.removeFromTreeBtn} onClick={node.removeField} />
