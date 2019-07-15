@@ -115,6 +115,7 @@
 
 .toolbarButton {
   @extend %rowItem;
+  margin-left: 12px;
 }
 
 .collapseButton,

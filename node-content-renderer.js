@@ -203,6 +203,7 @@ class FileThemeNodeContentRenderer extends Component {
                       <div
                         key={index} // eslint-disable-line react/no-array-index-key
                         className={styles.toolbarButton}
+                        style={btn.props.children ? null : {margin: '0px'}}
                       >
                         {btn}
                       {!node.children && (
