@@ -110,6 +110,14 @@ class FileThemeNodeContentRenderer extends Component {
       }
     });
 
+    // const setActive = (node) => {
+    //   console.log(node, 'event???');
+    //   // node.openFile();
+    //   const field = document.getElementsByClassName('rowWrapperDragDisabled');
+    //   console.log(field, 'field><><>');
+    //   field.classList.add('active')
+    // }
+
     const nodeContent = (
       <div style={{ height: '100%' }} {...otherProps}>
         {toggleChildrenVisibility &&
@@ -202,92 +210,37 @@ class FileThemeNodeContentRenderer extends Component {
                   listStyle: 'none',
             }}>
               <li>
-                <a style={{
-                  // white >>>   data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='3 3 16 16'%3E%3Cpath fill='%23e8e8e8' d='M12.597 11.042l2.803 2.803-1.556 1.555-2.802-2.802L8.239 15.4l-1.556-1.555 2.802-2.803-2.802-2.803 1.555-1.556 2.804 2.803 2.803-2.803L15.4 8.239z'/%3E%3C/svg%3E
-                  // black >>>   data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='3 3 16 16'%3E%3Cpath fill='%23424242' d='M12.597 11.042l2.803 2.803-1.556 1.555-2.802-2.802L8.239 15.4l-1.556-1.555 2.802-2.803-2.802-2.803 1.555-1.556 2.804 2.803 2.803-2.803L15.4 8.239z'/%3E%3C/svg%3E
-                  background: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cg fill='%23424242'%3E%3Cpath d='M11 3V1h-1v6h4V3h-3zm2 3h-2V4h2v2zM2 15h7V9H2v6zm2-5h3v1H5v2h2v1H4v-4z'/%3E%3C/g%3E%3Cpath fill='%2300539C' d='M3.979 3.5L4 6 3 5v1.5L4.5 8 6 6.5V5L5 6l-.021-2.5c0-.275.225-.5.5-.5H9V2H5.479c-.828 0-1.5.673-1.5 1.5z'/%3E%3C/svg%3E") 50% no-repeat`,
-                  display: 'none',
-                  marginRight: '.2em',
-                  width: '16px',
-                  height: '16px',
-                  cursor: 'pointer',
-                }}
-                title={'Replace'}
-                  onClick={() => console.log('click replace field')}></a>
+                <a className={styles.replaceField}
+                   title={'Replace'}
+                   onClick={() => console.log('click replace field')} />
               </li>
               <li>
-                <a style={{
-                  // white >>>   fill='%23e8e8e8'
-                  // black >>>   fill='%23424242'
-                  background: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='3 3 16 16'%3E%3Cpath fill='%23424242' d='M12.597 11.042l2.803 2.803-1.556 1.555-2.802-2.802L8.239 15.4l-1.556-1.555 2.802-2.803-2.802-2.803 1.555-1.556 2.804 2.803 2.803-2.803L15.4 8.239z'/%3E%3C/svg%3E") 50% no-repeat`,
-                  display: 'none',
-                  marginRight: '.2em',
-                  marginTop: '4px',
-                  marginLeft: '4px',
-                  width: '8px',
-                  height: '8px',
-                  cursor: 'pointer',
-                  }}
-                  onClick={node.removeField}></a>
+                <a className={styles.removeFromTreeBtn} onClick={node.removeField} />
               </li>
             </ul>
             )}
-                      </div>
-                    ))}
-                  </div>
+            </div>
+          ))}
+          </div>
             {toggleChildrenVisibility &&
             node.children &&
             node.children.length > 0 && (
-            <ul style={{
-                display: 'contents',
-                listStyle: 'none',
-            }}>
-              <li style={{
-                color: 'rgb(255, 255, 255)',
-                backgroundColor: 'rgb(77, 77, 77)',
-                textAlign: 'center',
-                display: 'inline-block',
-                padding: '.3em .5em',
-                borderRadius: '1em',
-                fontSize: '85%',
-                minWidth: '1.6em',
-                lineHeight: '1em',
-                fontWeight: '400',
-                boxSizing: 'border-box',
-                marginRight: '12px',
+              <ul style={{
+                  display: 'contents',
+                  listStyle: 'none',
               }}>
-                {node.children.length}
-              </li>
-              <li>
-                <a style={{
-                  // white >>>   fill='%23e8e8e8'
-                  // black >>>   fill='%23424242'
-                   background: `url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='16px' height='16px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve'%3E %3Cg id='icon_x5F_bg'%3E %3Cpath fill='%23424242' d='M11,15V9H1v6H11z M2,14v-2h1v-1H2v-1h3v4H2z M10,11H8v2h2v1H7v-4h3V11z M3,13v-1h1v1H3z M13,7v6h-1V8H5V7 H13z M13,2V1h-1v5h3V2H13z M14,5h-1V3h1V5z M11,2v4H8V4h1v1h1V4H9V3H8V2H11z'/%3E %3C/g%3E %3Cg id='color_x5F_action'%3E %3Cpath fill='%2300539C' d='M1.979,3.5L2,6L1,5v1.5L2.5,8L4,6.5V5L3,6L2.979,3.5c0-0.275,0.225-0.5,0.5-0.5H7V2H3.479 C2.651,2,1.979,2.673,1.979,3.5z'/%3E %3C/g%3E %3C/svg%3E") 50% no-repeat`,
-                   display: 'none',
-                   marginRight: '.2em',
-                   width: '16px',
-                   height: '16px',
-                   cursor: 'pointer',
-                }}
-                title={'Replace All'}
-                onClick={node.replaceAllInFile}></a>
-              </li>
-                <li>
-                  <a style={{
-                  // white >>>   fill='%23e8e8e8'
-                  // black >>>   fill='%23424242'
-                    background: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='3 3 16 16'%3E%3Cpath fill='%23424242' d='M12.597 11.042l2.803 2.803-1.556 1.555-2.802-2.802L8.239 15.4l-1.556-1.555 2.802-2.803-2.802-2.803 1.555-1.556 2.804 2.803 2.803-2.803L15.4 8.239z'/%3E%3C/svg%3E") 50% no-repeat`,
-                    display: 'none',
-                    marginRight: '.2em',
-                    marginTop: '4px',
-                    marginLeft: '4px',
-                    width: '8px',
-                    height: '8px',
-                    cursor: 'pointer',
-                  }}
-                  onClick={node.removeFile}></a>
+                <li className={styles.counter}>
+                  {node.children.length}
                 </li>
-            </ul>
+                <li>
+                  <a className={styles.replaceFile}
+                  title={'Replace All'}
+                  onClick={node.replaceAllInFile} />
+                </li>
+                  <li>
+                    <a className={styles.removeFromTreeBtn} onClick={node.removeFile} />
+                  </li>
+              </ul>
             )}
                 </div>
               </div>
