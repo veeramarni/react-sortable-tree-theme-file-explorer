@@ -185,7 +185,7 @@ class FileThemeNodeContentRenderer extends Component {
                       </div>
                     ))}
                   </div>
-                  <div className={styles.rowLabel}>
+                  <div className={styles.rowLabel} onClick={() => toggleChildrenVisibility({node, path, treeIndex})}>
                     <span className={styles.rowTitle} title={nodeTitle}>
                       {typeof nodeTitle === 'function'
                         ? nodeTitle({
@@ -197,55 +197,57 @@ class FileThemeNodeContentRenderer extends Component {
                     </span>
                   </div>
 
-                  <div className={styles.rowToolbar}>
+                  <div className={styles.rowToolbar}
+                  onClick={() => toggleChildrenVisibility({node, path, treeIndex})} >
                     {buttons.map((btn, index) => (
                       <div
                         key={index} // eslint-disable-line react/no-array-index-key
                         className={styles.toolbarButton}
                       >
                         {btn}
-            {!node.children && (
-            <ul style={{
-              display: 'contents',
-                  listStyle: 'none',
-            }}>
-              <li>
-                <a className={styles.replaceField}
-                   title={'Replace'}
-                   onClick={() => console.log('click replace field')} />
-              </li>
-              <li>
-                <a className={styles.removeFromTreeBtn} onClick={node.removeField} />
-              </li>
-            </ul>
-            )}
-            </div>
-          ))}
-          </div>
-            {toggleChildrenVisibility &&
-            node.children &&
-            node.children.length > 0 && (
-              <ul style={{
-                  display: 'contents',
-                  listStyle: 'none',
-              }}>
-                <li className={styles.counter}>
-                  {node.children.length}
-                </li>
-                <li>
-                  <a className={styles.replaceFile}
-                  title={'Replace All'}
-                  onClick={node.replaceAllInFile} />
-                </li>
-                  <li>
-                    <a className={styles.removeFromTreeBtn} onClick={node.removeFile} />
-                  </li>
-              </ul>
-            )}
-                </div>
-              </div>
-            </div>
-          )}
+                      {!node.children && (
+                      <ul style={{
+                        display: 'contents',
+                            listStyle: 'none',
+                      }}>
+                        <li>
+                          <a className={styles.replaceField}
+                             title={'Replace'}
+                             onClick={() => console.log('click replace field')} />
+                        </li>
+                        <li>
+                          <a className={styles.removeFromTreeBtn} onClick={node.removeField} />
+                        </li>
+                      </ul>
+                      )}
+                    </div>
+                  ))}
+                  </div>
+                    {toggleChildrenVisibility &&
+                    node.children &&
+                    node.children.length > 0 && (
+                        ////
+                      <ul style={{
+                          display: 'contents',
+                          listStyle: 'none',
+                      }}>
+                        <li className={styles.counter}>
+                          {node.children.length}
+                        </li>
+                        <li>
+                          <a className={styles.replaceFile}
+                          title={'Replace All'}
+                          onClick={node.replaceAllInFile} />
+                        </li>
+                          <li>
+                            <a className={styles.removeFromTreeBtn} onClick={node.removeFile} />
+                          </li>
+                      </ul>
+                    )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
         </div>
       </div>
     );
