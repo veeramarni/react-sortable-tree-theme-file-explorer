@@ -15,52 +15,30 @@ class App extends Component {
       searchFocusIndex: 0,
       searchFoundCount: null,
       treeData: [
-        { title: '<div>.gitignore</div>', annotation: "text.rtf"},
-        { title: 'package.json', annotation: "text.rtf", 
+        { title: '<div>.gitignore</div>', annotation: "text.rtf", active: false},
+        { title: 'root', annotation: "text.rtf", active: false ,
           children: [
-            { title: 'styles.css', openFile: () => {console.log('hello word 123')} },
-            { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf", openFile: () => {console.log('hello word 123')} },
-            { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf", openFile: () => {console.log('hello word 321')} },
-            { title: 'actions.js', annotation: "222333dd6.rtf", openFile: () => {console.log('hello')} },
-            { title: 'utils.js', annotation: '123123123eeeeeee', openFile: () => {console.log('hello word ')} },
-            ],
-         },
+            { title: 'styles.css', openFile: () => {console.log('hello word 123')}, active: false },
+            { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf", openFile: () => {console.log('hello word 123')}, active: false },
+            { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf", openFile: () => {console.log('hello word 321')}, active: false },
+            { title: 'actions.js', annotation: "222333dd6.rtf", openFile: () => {console.log('hello')}, active: false },
+            { title: 'utils.js', annotation: '123123123eeeeeee', openFile: () => {console.log('hello word ')}, active: false },
+          ],
+        },
         {
+          active: false,
           title: 'src',
           isDirectory: true,
           expanded: true,
           children: [
-            { title: 'styles.css', callback: () => {console.log('hello word 123')} },
-            { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf" },
-            { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf" },
-            { title: 'actions.js', annotation: "222333dd6.rtf", children: [{title: 12345, annotation: 12345}] },
-            { title: 'utils.js', annotation: '123123123eeeeeee' },
+            { title: 'styles.css', callback: () => {console.log('hello word 123')}, active: false },
+            { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf", active: false },
+            { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf", active: false },
+            { title: 'actions.js', annotation: "222333dd6.rtf", active: false, children: [{title: 12345, annotation: 12345, active: false}] },
+            { title: 'utils.js', annotation: '123123123eeeeeee', active: false },
           ],
           annotation: "/1.rtf",
           query: '',
-        },
-        {
-          title: 'tmp',
-          isDirectory: true,
-          children: [
-            { title: '12214124-log' },
-            { title: 'drag-disabled-file', dragDisabled: true },
-          ],
-          annotation: "/1.rtf"
-        },
-        {
-          title: 'build',
-          isDirectory: true,
-          children: [{ title: 'react-sortable-tree.js' }],
-          annotation: "/112.rtf"
-        },
-        {
-          title: 'public',
-          isDirectory: true,
-        },
-        {
-          title: 'node_modules',
-          isDirectory: true,
         },
       ],
     };
@@ -128,24 +106,6 @@ class App extends Component {
             ? (searchFocusIndex + 1) % searchFoundCount
             : 0,
       });
-
-
-    // const formatAnnotation = (query, forReplace, data) => {
-    //   if(data && data.search(query) !== -1) {
-    //     const result = data.replace(query, `<span style="text-decoration: line-through; background-color: red;">${query}</span><mark>${forReplace}</mark>`);
-    //     return result
-    //   }
-    //   return data
-    // }
-
-
-
-    // const data = this.state.treeData;
-    // for (let i = 0; i < data.length; i++) {
-    //   if(data[i].annotation) {
-    //     formatAnnotation(searchString, replace, data[i].annotation)
-    //   }
-    // }
 
     const newTree = treeData.map(el => {
       const result = el;

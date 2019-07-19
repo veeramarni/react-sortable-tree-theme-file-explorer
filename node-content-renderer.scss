@@ -353,6 +353,7 @@ $highlight-line-size: 6px; // Make it an even number for clean rendering
   margin-right: 12px;
 }
 .activeField {
-  background-color: blue;
+  background-color: blue!important;
+  color: white!important;
   opacity: 0.7;
 }

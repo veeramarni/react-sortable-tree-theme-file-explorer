@@ -13,10 +13,31 @@ function isDescendant(older, younger) {
   );
 }
 
+// toggleActiveField({ node: targetNode, path }) {
+//   const { instanceProps } = this.state;
+//
+//   const treeData = changeNodeAtPath({
+//     treeData: instanceProps.treeData,
+//     path,
+//     newNode: ({ node }) => ({ ...node, active: !node.active }),
+//       getNodeKey: this.props.getNodeKey,
+// });
+//
+//   this.props.onChange(treeData);
+//
+//   this.props.onActiveToggle({
+//     treeData,
+//     node: targetNode,
+//     active: !targetNode.active,
+//     path,
+//   });
+// }
+
 // eslint-disable-next-line react/prefer-stateless-function
 class FileThemeNodeContentRenderer extends Component {
   render() {
     const {
+      toggleActiveField,
       scaffoldBlockPxWidth,
       toggleChildrenVisibility,
       connectDragPreview,
@@ -110,14 +131,6 @@ class FileThemeNodeContentRenderer extends Component {
       }
     });
 
-    // const setActive = (node) => {
-    //   console.log(node, 'event???');
-    //   // node.openFile();
-    //   const field = document.getElementsByClassName('rowWrapperDragDisabled');
-    //   console.log(field, 'field><><>');
-    //   field.classList.add('active')
-    // }
-
     const nodeContent = (
       <div style={{ height: '100%' }} {...otherProps}>
         {toggleChildrenVisibility &&
@@ -132,26 +145,32 @@ class FileThemeNodeContentRenderer extends Component {
               style={{
                 left: (lowerSiblingCounts.length - 0.7) * scaffoldBlockPxWidth,
               }}
-              onClick={() =>
+              onClick={() => {
                 toggleChildrenVisibility({
                   node,
                   path,
                   treeIndex,
                 })
-              }
+
+              }}
             />
           )}
 
         <div
           className={
             styles.rowWrapper +
-            (!canDrag ? ` ${styles.rowWrapperDragDisabled}` : '')
+            (!canDrag ? ` ${styles.rowWrapperDragDisabled}` : '') +
+            (node.active ? ` ${styles.activeField}` : '')
           }
-          onClick={node.openFile}
+          onClick={() => {
+            toggleActiveField({node, path})
+            // node.active = !node.active;
+            // console.log(node.active, 'active???')
+          }}
         >
           {/* Set the row preview to be used during drag and drop */}
           {connectDragPreview(
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', width: '100px'}} >
               {scaffold}
               <div
                 className={
@@ -275,6 +294,7 @@ FileThemeNodeContentRenderer.defaultProps = {
   swapLength: null,
   title: null,
   toggleChildrenVisibility: null,
+  toggleActiveField: null,
 };
 
 FileThemeNodeContentRenderer.propTypes = {
@@ -297,6 +317,7 @@ FileThemeNodeContentRenderer.propTypes = {
   swapLength: PropTypes.number,
   title: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   toggleChildrenVisibility: PropTypes.func,
+  toggleActiveField: PropTypes.func,
   treeIndex: PropTypes.number.isRequired,
   treeId: PropTypes.string.isRequired,
   rowDirection: PropTypes.string.isRequired,
