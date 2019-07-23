@@ -163,9 +163,9 @@ class FileThemeNodeContentRenderer extends Component {
             (node.active ? ` ${styles.activeField}` : '')
           }
           onClick={() => {
-            toggleActiveField({node, path})
+            // toggleActiveField({node, path})
             // node.active = !node.active;
-            // console.log(node.active, 'active???')
+            console.log(node.active, 'active???')
           }}
         >
           {/* Set the row preview to be used during drag and drop */}

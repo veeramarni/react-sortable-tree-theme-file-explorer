@@ -31,7 +31,7 @@ class App extends Component {
           isDirectory: true,
           expanded: true,
           children: [
-            { title: 'styles.css', callback: () => {console.log('hello word 123')}, active: false },
+            { title: 'styles.css                a', callback: () => {console.log('hello word 123')}, active: false },
             { title: 'index.js', annotation: "/asdzxcasdfzxc.rtf", active: false },
             { title: 'reducers.js', annotation: "dddddsssaaaaax/5.rtf", active: false },
             { title: 'actions.js', annotation: "222333dd6.rtf", active: false, children: [{title: 12345, annotation: 12345, active: false}] },
