@@ -165,6 +165,9 @@ class FileThemeNodeContentRenderer extends Component {
           onClick={() => {
             // toggleActiveField({node, path})
             // node.active = !node.active;
+            if (node.openFile) {
+              node.openFile();
+            }
             console.log(node.active, 'active???')
           }}
         >
