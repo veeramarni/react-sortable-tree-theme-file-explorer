@@ -163,7 +163,8 @@ class FileThemeNodeContentRenderer extends Component {
             (node.active ? ` ${styles.activeField}` : '')
           }
           onClick={() => {
-            // toggleActiveField({node, path})
+              toggleChildrenVisibility({node, path, treeIndex})
+              // toggleActiveField({node, path})
             // node.active = !node.active;
             if (node.openFile) {
               node.openFile();
