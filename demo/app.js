@@ -15,7 +15,7 @@ class App extends Component {
       searchFocusIndex: 0,
       searchFoundCount: null,
       treeData: [
-        { title: '<div>.gitignore</div>', annotation: "text.rtf", active: false},
+        { title: '<div style="background: seagreen">.gitignore</div>', annotation: "text.rtf", active: false},
         { title: 'root', annotation: "text.rtf", active: false ,
           children: [
             { title: 'styles.css', openFile: () => {console.log('hello word 123')}, active: false },
@@ -252,7 +252,7 @@ class App extends Component {
                       marginRight: '10px'
                     }}
                   >
-                    {ReactHtmlParser(rowInfo.node.title)}
+                    {rowInfo.node.title}
                   </div>,
                 ],
               }
