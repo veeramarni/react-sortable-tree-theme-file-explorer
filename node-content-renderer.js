@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 import styles from './node-content-renderer.scss';
 
 function isDescendant(older, younger) {
@@ -216,7 +216,25 @@ class FileThemeNodeContentRenderer extends Component {
                             path,
                             treeIndex,
                           })
-                          : nodeTitle}
+                          : nodeTitle.start}
+                    </span>
+                      <span className={styles.rowTitle} title={nodeTitle}>
+                      {typeof nodeTitle === 'function'
+                          ? nodeTitle({
+                              node,
+                              path,
+                              treeIndex,
+                          })
+                          : ReactHtmlParser(nodeTitle.html)}
+                    </span>
+                      <span className={styles.rowTitle} title={nodeTitle}>
+                      {typeof nodeTitle === 'function'
+                          ? nodeTitle({
+                              node,
+                              path,
+                              treeIndex,
+                          })
+                          : nodeTitle.end}
                     </span>
                   </div>
 
