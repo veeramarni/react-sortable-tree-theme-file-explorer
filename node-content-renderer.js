@@ -13,6 +13,7 @@ function isDescendant(older, younger) {
   );
 }
 
+
 // toggleActiveField({ node: targetNode, path }) {
 //   const { instanceProps } = this.state;
 //
@@ -35,6 +36,7 @@ function isDescendant(older, younger) {
 
 // eslint-disable-next-line react/prefer-stateless-function
 class FileThemeNodeContentRenderer extends Component {
+
   render() {
     const {
       toggleActiveField,
@@ -68,6 +70,21 @@ class FileThemeNodeContentRenderer extends Component {
       rowDirection,
       ...otherProps
     } = this.props;
+
+    const options = {
+      decodeEntities: true,
+      transform: (node, index) => {
+        if (this.props.node.title.replace === '') {
+          const arr = this.props.node.title.search.split('').map(char => `<span style="background-color: rgba(234, 92, 0, 0.33);">${char}</span>`);
+
+          return ReactHtmlParser(arr.join(''));
+        } else {
+          const arr = this.props.node.title.search.split('').map(char => `<span style="background-color: rgba(234, 92, 0, 0.33);">${char}</span>`);
+
+          return ReactHtmlParser(`${arr.join('')}</span><mark style="background-color: rgba(155, 185, 85, 0.2)">${this.props.node.title.replace}</mark>`);
+        }
+      }
+    }
 
     const nodeTitle = title || node.title;
 
@@ -208,34 +225,16 @@ class FileThemeNodeContentRenderer extends Component {
                       </div>
                     ))}
                   </div>
-                  <div className={styles.rowLabel} onClick={() => toggleChildrenVisibility({node, path, treeIndex})}>
-                    <span className={styles.rowTitle} title={nodeTitle}>
-                      {typeof nodeTitle === 'function'
-                        ? nodeTitle({
-                            node,
-                            path,
-                            treeIndex,
-                          })
-                          : nodeTitle.start}
+                  <div className={styles.rowLabel} onClick={() => toggleChildrenVisibility({node, path, treeIndex})} title={nodeTitle.text}>
+                    <span className={styles.rowTitle}>
+                        {nodeTitle.start}
                     </span>
-                      <span className={styles.rowTitle} title={nodeTitle}>
-                      {typeof nodeTitle === 'function'
-                          ? nodeTitle({
-                              node,
-                              path,
-                              treeIndex,
-                          })
-                          : ReactHtmlParser(nodeTitle.html)}
+                      <span className={styles.rowTitle}>
+                      {ReactHtmlParser(nodeTitle.html, options)}
                     </span>
-                      <span className={styles.rowTitle} title={nodeTitle}>
-                      {typeof nodeTitle === 'function'
-                          ? nodeTitle({
-                              node,
-                              path,
-                              treeIndex,
-                          })
-                          : nodeTitle.end}
-                    </span>
+                      <span className={styles.rowTitle}>
+                          {nodeTitle.end}
+                      </span>
                   </div>
 
                   <div className={styles.rowToolbar}
